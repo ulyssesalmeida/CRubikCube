@@ -128,3 +128,11 @@ class AtomicCubeTestCase(unittest.TestCase):
 |ON|BL|RD|
    |WT|"""
         self.assertEqual(repr(self.atomic_cube), cube_repr)
+
+    def test_show_face(self):
+        self.assertEqual(self.atomic_cube.show_face("U"),"YL")
+        self.assertEqual(self.atomic_cube.show_face("D"),"WT")
+        self.assertEqual(self.atomic_cube.show_face("F"),"BL")
+        self.assertEqual(self.atomic_cube.show_face("B"),"GR")
+        self.assertEqual(self.atomic_cube.show_face("R"),"RD")
+        self.assertEqual(self.atomic_cube.show_face("L"),"ON")
