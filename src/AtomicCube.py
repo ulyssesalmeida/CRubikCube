@@ -10,6 +10,9 @@ class AtomicCube(object):
         self.left_face = "ON"
 
     def __str__(self):
+        return self.__repr__()
+
+    def __repr__(self):
         ret = ""
         ret += "   |%s|\n" % (self.back_face)
         ret += "   |%s|\n" % (self.upper_face)
