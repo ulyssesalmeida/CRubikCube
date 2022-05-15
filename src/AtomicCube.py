@@ -35,6 +35,41 @@ class AtomicCube(object):
         self.up_rotate(True^clockwise)
 
 
+    def front_rotate(self, clockwise=True):
+        if clockwise:
+            tmp = self.upper_face
+            self.upper_face = self.left_face
+            self.left_face = self.down_face
+            self.down_face = self.right_face
+            self.right_face = tmp
+        else:
+            tmp = self.upper_face
+            self.upper_face = self.right_face
+            self.right_face = self.down_face
+            self.down_face = self.left_face
+            self.left_face = tmp
+
+    def back_rotate(self, clockwise=True):
+        self.front_rotate(True^clockwise)
+
+    def right_rotate(self, clockwise=True):
+        if clockwise:
+            tmp = self.upper_face
+            self.upper_face = self.front_face
+            self.front_face = self.down_face
+            self.down_face = self.back_face
+            self.back_face = tmp
+        else:
+            tmp = self.upper_face
+            self.upper_face = self.back_face
+            self.back_face = self.down_face
+            self.down_face = self.front_face
+            self.front_face = tmp
+
+    def left_rotate(self, clockwise=True):
+        self.right_rotate(True^clockwise)
+
+
 def test():
     ac = AtomicCube()
     print(ac)
