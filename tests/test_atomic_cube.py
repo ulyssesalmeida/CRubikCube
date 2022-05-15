@@ -1,6 +1,9 @@
+import sys
 import unittest
 
-from src.AtomicCube import AtomicCube
+sys.path.append("./src/")
+
+from AtomicCube import AtomicCube
 
 class AtomicCubeTestCase(unittest.TestCase):
     def setUp(self):
