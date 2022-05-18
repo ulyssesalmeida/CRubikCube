@@ -116,8 +116,6 @@ class Cube(object):
         for i in range(3):
             for j in range(3):
                 self.cube[i][0][j] = cube_copy[2-j][0][i]
-        for i in range(3):
-            for j in range(3):
                 self.cube[i][0][j].up_rotate(clockwise)
 
     def right_rotate(self, clockwise = True):
@@ -125,8 +123,6 @@ class Cube(object):
         for i in range(3):
             for j in range(3):
                 self.cube[2][i][j] = cube_copy[2][2-j][i]
-        for i in range(3):
-            for j in range(3):
                 self.cube[2][i][j].right_rotate(clockwise)
 
     def front_rotate(self, clockwise = True):
@@ -134,8 +130,6 @@ class Cube(object):
         for i in range(3):
             for j in range(3):
                 self.cube[i][j][0] = cube_copy[j][2-i][0]
-        for i in range(3):
-            for j in range(3):
                 self.cube[i][j][0].front_rotate()
 
 
