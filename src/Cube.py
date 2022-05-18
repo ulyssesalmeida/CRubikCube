@@ -113,10 +113,16 @@ class Cube(object):
 
     def up_rotate(self, clockwise = True):
         cube_copy = copy.deepcopy(self.cube)
-        for i in range(3):
-            for j in range(3):
-                self.cube[i][0][j] = cube_copy[2-j][0][i]
-                self.cube[i][0][j].up_rotate(clockwise)
+        if clockwise:
+            for i in range(3):
+                for j in range(3):
+                    self.cube[i][0][j] = cube_copy[2-j][0][i]
+                    self.cube[i][0][j].up_rotate(clockwise)
+        else:
+            for i in range(3):
+                for j in range(3):
+                    self.cube[2-j][0][i] = cube_copy[i][0][j]
+                    self.cube[2-j][0][i].up_rotate(clockwise)
 
     def right_rotate(self, clockwise = True):
         cube_copy = copy.deepcopy(self.cube)
