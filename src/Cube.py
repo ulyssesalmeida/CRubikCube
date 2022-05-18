@@ -95,7 +95,7 @@ class Cube(object):
         layer = []
         for i in range(3):
             line = []
-            for j in range(3):
+            for j in range(2,-1,-1):
                 line.append(self.cube[0][i][j])
             layer.append(line)
         return layer
@@ -134,4 +134,5 @@ if __name__ == "__main__":
     c = Cube()
     c.up_rotate()
     c.right_rotate()
+    c.up_rotate()
     print(repr(c))
