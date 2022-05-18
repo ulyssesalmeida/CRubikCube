@@ -129,10 +129,20 @@ class Cube(object):
             for j in range(3):
                 self.cube[2][i][j].right_rotate(clockwise)
 
+    def front_rotate(self, clockwise = True):
+        cube_copy = copy.deepcopy(self.cube)
+        for i in range(3):
+            for j in range(3):
+                self.cube[i][j][0] = cube_copy[j][2-i][0]
+        for i in range(3):
+            for j in range(3):
+                self.cube[i][j][0].front_rotate()
+
 
 if __name__ == "__main__":
     c = Cube()
     c.up_rotate()
     c.right_rotate()
     c.up_rotate()
+    c.front_rotate()
     print(repr(c))
