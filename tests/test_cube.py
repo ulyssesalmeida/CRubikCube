@@ -96,6 +96,22 @@ class CubeRotationsTestCase(unittest.TestCase):
         self.cube.right_rotate()
         self.assertEqual(repr(self.cube),cube_repr)
 
+    def test_front_rotate(self):
+        cube_repr = """         |GR|GR|GR|
+         |GR|GR|GR|
+         |GR|GR|GR|
+         |YL|YL|YL|
+         |YL|YL|YL|
+         |ON|ON|ON|
+|ON|ON|WT|BL|BL|BL|YL|RD|RD|
+|ON|ON|WT|BL|BL|BL|YL|RD|RD|
+|ON|ON|WT|BL|BL|BL|YL|RD|RD|
+         |RD|RD|RD|
+         |WT|WT|WT|
+         |WT|WT|WT|"""
+        self.cube.front_rotate()
+        self.assertEqual(repr(self.cube),cube_repr)
+
     def test_complex_rotate(self):
         cube_repr = """         |GR|GR|YL|
          |GR|GR|YL|
@@ -126,5 +142,20 @@ class CubeRotationsTestCase(unittest.TestCase):
          |WT|WT|GR|
          |WT|WT|ON|"""
         self.cube.up_rotate()
+        self.assertEqual(repr(self.cube), cube_repr)
+
+        cube_repr = """         |GR|GR|YL|
+         |GR|GR|YL|
+         |BL|BL|BL|
+         |YL|YL|YL|
+         |YL|YL|YL|
+         |ON|ON|WT|
+|RD|RD|WT|BL|BL|RD|BL|ON|ON|
+|ON|ON|WT|BL|BL|RD|BL|RD|GR|
+|ON|ON|GR|WT|WT|GR|RD|RD|GR|
+         |RD|RD|YL|
+         |WT|WT|GR|
+         |WT|WT|ON|"""
+        self.cube.front_rotate()
         self.assertEqual(repr(self.cube), cube_repr)
 
