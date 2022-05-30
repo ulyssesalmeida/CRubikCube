@@ -111,33 +111,53 @@ class Cube(object):
             ret += "|\n"
         return ret[:-1]
 
-    def up_rotate(self, clockwise = True):
+    def down_rotate(self, clockwise = True, layer = 2):
+        self.up_rotate(clockwise = clockwise^True, layer = 2)
+
+    def up_rotate(self, clockwise = True, layer = 0):
         cube_copy = copy.deepcopy(self.cube)
         if clockwise:
             for i in range(3):
                 for j in range(3):
-                    self.cube[i][0][j] = cube_copy[2-j][0][i]
-                    self.cube[i][0][j].up_rotate(clockwise)
+                    self.cube[i][layer][j] = cube_copy[2-j][layer][i]
+                    self.cube[i][layer][j].up_rotate(clockwise)
         else:
             for i in range(3):
                 for j in range(3):
-                    self.cube[2-j][0][i] = cube_copy[i][0][j]
-                    self.cube[2-j][0][i].up_rotate(clockwise)
+                    self.cube[2-j][layer][i] = cube_copy[i][layer][j]
+                    self.cube[2-j][layer][i].up_rotate(clockwise)
 
-    def right_rotate(self, clockwise = True):
+    def left_rotate(self, clockwise = True, layer = 0):
+        self.right_rotate(clockwise = clockwise^True, layer = 0)
+
+    def right_rotate(self, clockwise = True, layer = 2):
         cube_copy = copy.deepcopy(self.cube)
-        for i in range(3):
-            for j in range(3):
-                self.cube[2][i][j] = cube_copy[2][2-j][i]
-                self.cube[2][i][j].right_rotate(clockwise)
+        if clockwise:
+            for i in range(3):
+                for j in range(3):
+                    self.cube[layer][i][j] = cube_copy[layer][2-j][i]
+                    self.cube[layer][i][j].right_rotate(clockwise)
+        else:
+            for i in range(3):
+                for j in range(3):
+                    self.cube[layer][2-j][i] = cube_copy[layer][i][j]
+                    self.cube[layer][2-j][i].right_rotate(clockwise)
 
-    def front_rotate(self, clockwise = True):
+    def front_rotate(self, clockwise = True, layer = 0):
+        self.back_rotate(clockwise = clockwise^True, layer = 0)
+
+    def back_rotate(self, clockwise = True, layer = 2):
         cube_copy = copy.deepcopy(self.cube)
-        for i in range(3):
-            for j in range(3):
-                self.cube[i][j][0] = cube_copy[j][2-i][0]
-                self.cube[i][j][0].front_rotate()
-
+        if clockwise:
+            for i in range(3):
+                for j in range(3):
+                    self.cube[i][j][layer] = cube_copy[2-j][i][layer]
+                    self.cube[i][j][layer].back_rotate(clockwise)
+        else:
+            for i in range(3):
+                for j in range(3):
+                    self.cube[2-j][i][layer] = cube_copy[i][j][layer]
+                    self.cube[2-j][i][layer].back_rotate(clockwise)
 
 if __name__ == "__main__":
     c = Cube()
