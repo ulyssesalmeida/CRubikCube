@@ -222,3 +222,32 @@ class CubeRotationsTestCase(unittest.TestCase):
         self.cube.up_rotate(clockwise=False)
         self.assertEqual(repr(self.cube), cube_repr)
 
+        cube_repr = """         |YL|GR|YL|
+         |YL|GR|YL|
+         |YL|ON|BL|
+         |RD|YL|WT|
+         |BL|YL|ON|
+         |WT|YL|ON|
+|BL|WT|GR|RD|RD|WT|BL|BL|RD|
+|BL|ON|ON|WT|BL|RD|BL|RD|GR|
+|BL|ON|ON|WT|WT|GR|RD|RD|GR|
+         |GR|RD|YL|
+         |GR|WT|GR|
+         |ON|WT|ON|"""
+        self.cube.left_rotate(clockwise=False)
+        self.assertEqual(repr(self.cube), cube_repr)
+
+        cube_repr = """         |GR|RD|RD|
+         |YL|GR|YL|
+         |YL|ON|BL|
+         |RD|YL|WT|
+         |BL|YL|ON|
+         |WT|YL|ON|
+|BL|WT|GR|RD|RD|WT|BL|BL|RD|
+|BL|ON|ON|WT|BL|RD|BL|RD|GR|
+|YL|GR|YL|BL|ON|ON|WT|WT|GR|
+         |ON|GR|GR|
+         |WT|WT|RD|
+         |ON|GR|YL|"""
+        self.cube.down_rotate()
+        self.assertEqual(repr(self.cube), cube_repr)
