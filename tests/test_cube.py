@@ -144,6 +144,22 @@ class CubeRotationsTestCase(unittest.TestCase):
         self.cube.front_rotate()
         self.assertEqual(repr(self.cube),cube_repr)
 
+    def test_back_rotate(self):
+        cube_repr = """         |GR|GR|GR|
+         |GR|GR|GR|
+         |GR|GR|GR|
+         |RD|RD|RD|
+         |YL|YL|YL|
+         |YL|YL|YL|
+|YL|ON|ON|BL|BL|BL|RD|RD|WT|
+|YL|ON|ON|BL|BL|BL|RD|RD|WT|
+|YL|ON|ON|BL|BL|BL|RD|RD|WT|
+         |WT|WT|WT|
+         |WT|WT|WT|
+         |ON|ON|ON|"""
+        self.cube.back_rotate()
+        self.assertEqual(repr(self.cube),cube_repr)
+
     def test_complex_rotate(self):
         cube_repr = """         |GR|GR|YL|
          |GR|GR|YL|
