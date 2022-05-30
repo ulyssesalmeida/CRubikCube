@@ -251,3 +251,10 @@ class CubeRotationsTestCase(unittest.TestCase):
          |ON|GR|YL|"""
         self.cube.down_rotate()
         self.assertEqual(repr(self.cube), cube_repr)
+
+    def test_is_solved(self):
+        self.assertEqual(self.cube.is_solved(), True)
+        self.cube.down_rotate()
+        self.assertEqual(self.cube.is_solved(), False)
+        self.cube.down_rotate(clockwise=False)
+        self.assertEqual(self.cube.is_solved(), True)

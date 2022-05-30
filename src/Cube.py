@@ -100,6 +100,20 @@ class Cube(object):
             layer.append(line)
         return layer
 
+    def is_solved(self):
+        layers = {"U":"YL",
+                  "D":"WT",
+                  "F":"BL",
+                  "B":"GR",
+                  "R":"RD",
+                  "L":"ON" }
+        for layer,color in layers.items():
+            for line in self.get_layer(layer):
+                for atomicCube in line:
+                    if atomicCube.show_face(layer) != color:
+                        return False
+        return True
+
     def print_face_line(self, face, line, separator):
         return separator.join([atomic_cube.show_face(face) for atomic_cube in line])
 
