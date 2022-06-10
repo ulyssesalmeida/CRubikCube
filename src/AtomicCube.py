@@ -18,7 +18,11 @@ class AtomicCube(object):
         return ret
 
     def up_rotate(self):
-        pass
+        tmp = self.front_face
+        self.front_face = self.right_face
+        self.right_face = self.back_face
+        self.back_face = self.left_face
+        self.left_face = tmp
 
 
 def test():
