@@ -139,3 +139,13 @@ class AtomicCubeTestCase(unittest.TestCase):
         self.assertEqual(self.atomic_cube.show_face("B"),"GR")
         self.assertEqual(self.atomic_cube.show_face("R"),"RD")
         self.assertEqual(self.atomic_cube.show_face("L"),"ON")
+
+    def test_comparison(self):
+        second_cube = AtomicCube()
+        self.assertEqual(self.atomic_cube, second_cube)
+        second_cube.up_rotate()
+        self.assertNotEqual(self.atomic_cube, second_cube)
+        second_cube.up_rotate()
+        second_cube.up_rotate()
+        second_cube.up_rotate()
+        self.assertEqual(self.atomic_cube, second_cube)
