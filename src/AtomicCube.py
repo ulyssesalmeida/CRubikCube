@@ -9,6 +9,21 @@ class AtomicCube(object):
         self.right_face = "RD"
         self.left_face = "ON"
 
+    def __eq__(self, obj):
+        if self.upper_face != obj.upper_face:
+            return False
+        if self.down_face != obj.down_face:
+            return False
+        if self.front_face != obj.front_face:
+            return False
+        if self.back_face != obj.back_face:
+            return False
+        if self.right_face != obj.right_face:
+            return False
+        if self.left_face != obj.left_face:
+            return False
+        return True
+
     def __str__(self):
         return self.__repr__()
 
