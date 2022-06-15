@@ -27,11 +27,41 @@ if __name__ == "__main__":
     cli = CLI()
     print(cli.welcome_message())
     print(cli.print_cube())
-    cmd = cli.read_command()
-    while not cmd in ["exit","quit"]:
-        if cmd == "help":
-            print(cli.help_message())
-        if cmd == "U":
-            cli.cube.up_rotate()
-        print(cli.print_cube())
-        cmd = cli.read_command()
+    while True:
+        typed_cmds = cli.read_command()
+        for cmd in typed_cmds.split(","):
+            if cmd == "help":
+                print(cli.help_message())
+            if cmd in ["exit", "quit"]:
+                break
+            if cmd == "U":
+                cli.cube.up_rotate()
+            if cmd == "U'":
+                cli.cube.up_rotate(clockwise=False)
+            if cmd == "D":
+                cli.cube.down_rotate()
+            if cmd == "D'":
+                cli.cube.down_rotate(clockwise=False)
+            if cmd == "F":
+                cli.cube.front_rotate()
+            if cmd == "F'":
+                cli.cube.front_rotate(clockwise=False)
+            if cmd == "B":
+                cli.cube.back_rotate()
+            if cmd == "B'":
+                cli.cube.back_rotate(clockwise=False)
+            if cmd == "R":
+                cli.cube.right_rotate()
+            if cmd == "R'":
+                cli.cube.right_rotate(clockwise=False)
+            if cmd == "L":
+                cli.cube.left_rotate()
+            if cmd == "L'":
+                cli.cube.left_rotate(clockwise=False)
+            print(cli.print_cube())
+            if cli.cube.is_solved():
+                print("--- SOLVED")
+            else:
+                print("---")
+        if cmd in ["exit", "quit"]:
+            break
