@@ -18,7 +18,18 @@ Type "help" for more information""" % (self.version, sys.version)
         return ">>> "
     
     def print_cube(self):
-        return repr(self.cube)
+        colors = {"RD": "\u001b[31m",
+                 "GR": "\u001b[32m",
+                 "YL": "\u001b[33m",
+                 "BL": "\u001b[34m",
+                 "ON": "\u001b[35m",
+                 "WT": "\u001b[37m",
+                 "Reset": "\u001b[0m" }
+
+        str_repr = repr(self.cube)
+        for color in colors:
+            str_repr = str_repr.replace(color,f"{colors[color]}{color}{colors['Reset']}")
+        return str_repr
 
     def read_command(self):
         return input(self.terminal())
