@@ -29,10 +29,10 @@ class AtomicCube(object):
 
     def __repr__(self):
         ret = ""
-        ret += "   |%s|\n" % (self.back_face)
-        ret += "   |%s|\n" % (self.upper_face)
-        ret += "|%s|%s|%s|\n" % (self.left_face, self.front_face, self.right_face)
-        ret += "   |%s|" % (self.down_face)
+        ret += f"   |{self.back_face}|\n"
+        ret += f"   |{self.upper_face}|\n"
+        ret += f"|{self.left_face}|{self.front_face}|{self.right_face}|\n"
+        ret += f"   |{self.down_face}|"
         return ret
 
     def show_face(self, face):
@@ -43,7 +43,7 @@ class AtomicCube(object):
             "B":self.back_face,
             "R":self.right_face,
             "L":self.left_face}
-        return faces[face]
+        return f"{faces[face]}"
 
     def up_rotate(self, clockwise=True):
         if clockwise:
