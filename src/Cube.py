@@ -12,6 +12,13 @@ class Cube(object):
                 layer.append(line)
             self.cube.append(layer)
 
+    def __eq__(self, obj):
+        for i in range(3):
+            for j in range(3):
+                if self.cube[i][j] != obj.cube[i][j]:
+                    return False
+        return True
+
     def __repr__(self):
         b_layer = self.get_back_layer()
         u_layer = self.get_up_layer()
