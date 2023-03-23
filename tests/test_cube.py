@@ -1,3 +1,4 @@
+from calendar import c
 import sys
 import unittest
 
@@ -268,3 +269,32 @@ class CubeRotationsTestCase(unittest.TestCase):
         second_cube.up_rotate()
         second_cube.up_rotate()
         self.assertEqual(self.cube, second_cube)
+    
+    def test_in_list(self):
+        cube_list = []
+        c1 = Cube()
+        self.assertNotIn(c1, cube_list)
+        cube_list.append(c1)
+        self.assertIn(c1, cube_list)
+        c2 = Cube()
+        self.assertIn(c1, cube_list)
+        c2.up_rotate()
+        self.assertNotIn(c2, cube_list)
+        cube_list.append(c2)
+        c3 = Cube()
+        self.assertIn(c3, cube_list)
+        c3.up_rotate()
+        self.assertIn(c3, cube_list)
+    
+    def test_in_list2(self):
+        cube_list = []
+        c1 = Cube()
+        c2 = Cube()
+        c3 = Cube()
+
+        c3.down_rotate()
+        cube_list.append(c1)
+        cube_list.append(c3)
+        c2.up_rotate()
+        c2.up_rotate(clockwise=False)
+        self.assertIn(c2,cube_list)
